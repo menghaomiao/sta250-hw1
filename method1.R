@@ -9,5 +9,5 @@ method1=function() {
   delays=c(delays, delay)
  }
  funs=c(mean=mean, sd=sd, median=median)
- sapply(funs, function(f) f(x, na.rm=T))
+ sapply(funs, function(f) f(delay, na.rm=T))
 }
