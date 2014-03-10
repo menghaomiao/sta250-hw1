@@ -6,11 +6,10 @@ method5=function() {
  t=data.frame(0, 0)
  for (i in 1:81) {
   con=pipe(command2[i])
-  d=scan(con) #The result came back is a frequency table. scan() will unlist it.
+  d=readLines(con)
   close(con)
-  y=d[seq(1, length(d), 2)] #The odd position is frequency.
-  x=d[seq(2, length(d), 2)] #The even position is arrival delay level.
-  nt=data.frame(x, y)
+  dcon=textConnection(d) #Make a text connection because it has two columns.
+  nt=read.table(dcon)
   t=mergetable(t, nt)
  }
  arrdelay=t[[1]]
